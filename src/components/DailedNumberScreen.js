@@ -24,15 +24,15 @@ export default function DailedNumberScreen() {
   return (
     <div className='Dailer'>
      <ErrorOutlineIcon className='ibutton'/>
-     <p>calling mobile...</p>
-     <h5>Test 99</h5>
+     <p className='calling'>calling mobile...</p>
+     <h3 className='Test99'>Test 99</h3>
      <div className='grid-container-2'>
-     <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><VolumeUpIcon/></IconButton >Speaker</div>
+     <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><VolumeUpIcon style={{color:"white"}}/></IconButton >Speaker</div>
      <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><VideocamIcon/></IconButton>FaceTime</div>
-     <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><MicOffIcon/></IconButton>Mute</div> 
+     <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><MicOffIcon style={{color:"white"}}/></IconButton>Mute</div> 
      <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><PersonAddIcon/></IconButton>Add</div>
      <div className='btn'><IconButton style={roundButtoncallStyle} variant='contained'><CallEndIcon style={{color:"white"}}/></IconButton>End</div>
-     <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><AppsIcon/></IconButton>Keyboard</div> 
+     <div className='btn'><IconButton style={roundButtonStyle} variant='contained'><AppsIcon style={{color:"white"}}/></IconButton>Keyboard</div> 
      </div>
     </div>
   )

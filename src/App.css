@@ -48,6 +48,7 @@ body{
   justify-content: center;
   height: 100vh;
   background-color: #4d4c5c;
+  /* background-color: black; */
 }
 .grid-container {
   display: grid;
@@ -86,4 +87,26 @@ body{
   align-items: center;
   font-size: 12px;
   color: white;
+}
+.Test99{
+  color: white;
+  letter-spacing: 1px;
+}
+.calling{
+  color: darkgray;
+}
+.list{
+  display: flex;
+  justify-content: space-around;
+}
+.time{
+  font-size: 15px;
+}
+.deleteicon{
+  cursor: pointer;
+}
+.recents{
+  align-self: flex-start;
+  padding-left: 4%;
+  /* transform: translateY(-50%); */
 }
