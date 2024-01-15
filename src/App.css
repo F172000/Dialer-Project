@@ -110,3 +110,8 @@ body{
   padding-left: 4%;
   /* transform: translateY(-50%); */
 }
+.calllog{
+  display: flex;
+  justify-content: center;
+  color:white;
+}
