@@ -3,10 +3,9 @@ import {TextField,Button} from '@mui/material';
 import { Link,useNavigate } from 'react-router-dom';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import BackspaceIcon from '@mui/icons-material/Backspace';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 export default function DailerScreen() {
     const dispatch = useDispatch();
-      // console.log(dialedNumber);
     const navigate=useNavigate();
     const [dial,setdial]=useState('');
 const roundButtonStyle = {
@@ -26,7 +25,6 @@ const roundButtonStyle = {
     setdial(dial+digit);
   };
   const handleBackspaceClick = () => {
-    // dispatch({ type: 'Remove_Number'});
     setdial(dial.slice(0, -1));
   };
   const handleNavigate=()=>{
