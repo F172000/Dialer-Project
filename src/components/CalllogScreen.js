@@ -66,7 +66,7 @@ export default function CalllogScreen() {
           }
         />
             
-            <span className='time'style={{color:'white'}}>5:55PM</span><DeleteIcon className='deleteicon' style={{color:'red'}} onClick={()=>handledelete(item.id)} />
+            <span className='time'style={{color:'white'}}>{item.time}</span><DeleteIcon className='deleteicon' style={{color:'red'}} onClick={()=>handledelete(item.id)} />
       
     </ListItem>
     <Divider sx={{
