@@ -6,8 +6,7 @@ import BackspaceIcon from '@mui/icons-material/Backspace';
 import { useDispatch, useSelector } from 'react-redux';
 export default function DailerScreen() {
     const dispatch = useDispatch();
-    const dialedNumber = useSelector((state) => state.dialer.dialedNumber);
-    console.log(dialedNumber);
+      // console.log(dialedNumber);
     const navigate=useNavigate();
     const [dial,setdial]=useState('');
 const roundButtonStyle = {
@@ -24,24 +23,24 @@ const roundButtonStyle = {
     backgroundColor:'green',
   };
   const handleButtonClick = (digit) => {
-    dispatch({type:'Add_Number',payload:dialedNumber + digit});
+    setdial(dial+digit);
   };
   const handleBackspaceClick = () => {
-    dispatch({ type: 'Remove_Number', payload: dialedNumber.slice(0, -1) });
-    // setdial(dial.slice(0, -1));
+    // dispatch({ type: 'Remove_Number'});
+    setdial(dial.slice(0, -1));
   };
   const handleNavigate=()=>{
-    if(dialedNumber===''){
+    if(dial===''){
         navigate('/')
     }
     else{
-        dispatch({type:'SET_DIALED_NUMBER',payload:dialedNumber});
+        dispatch({type:'SET_DIALED_NUMBER',payload:dial});
         navigate('/Dail')
     }
   }
   return (
     <div className='Dailer'>
-     <TextField   variant="standard" value={dialedNumber} InputProps={{ style: { borderBottom: '1px solid white', color: 'white' } }}/>
+     <TextField   variant="standard" value={dial} InputProps={{ style: { borderBottom: '1px solid white', color: 'white' } }}/>
      <Link to={''} className='anchorstyle'>Add Number</Link>
      <div className='grid-container'>
      <Button style={roundButtonStyle} variant='contained'onClick={()=>handleButtonClick(1)} >1</Button >

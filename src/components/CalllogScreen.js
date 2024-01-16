@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ListItem,Divider,ListItemText,Typography,List } from '@mui/material';
 export default function CalllogScreen() {
     const dispatch = useDispatch();
-    const count = useSelector((state) => state.dialer.count);
-    const handledelete=()=>{
-        dispatch({type:"delete",payload:count-1})
+    const logs = useSelector((state) => state.dialer);
+    console.log(logs);
+    const handledelete=(id)=>{
+        dispatch({type:"delete",payload:id})
     }
     const [alignment, setAlignment] = React.useState('missed');
 
@@ -27,23 +28,29 @@ export default function CalllogScreen() {
   return (
     <div className='Dailer'>
        <ToggleButtonGroup
-      color="primary"
       value={alignment}
       exclusive
       onChange={handleChange}
       aria-label="Platform"
     >
-      <ToggleButton value="all">All</ToggleButton>
-      <ToggleButton value="missed">Missed</ToggleButton>
+      <ToggleButton style={{
+          backgroundColor: 'gray', 
+          color: 'white',           
+        }} value="all">All</ToggleButton>
+      <ToggleButton style={{
+          backgroundColor: 'gray', 
+          color: 'white',           
+        }} value="missed">Missed</ToggleButton>
     </ToggleButtonGroup>
     <h2 className='recents' style={{color:'white'}}>Recents</h2>
     <List sx={style}>
-        {count>0? (
-    Array.from({ length: count }, (_, index) => (
+        {logs.length>0? (
+    logs.map((item,index)=>(
+
          <React.Fragment key={index}>
-    <ListItem >
+    <ListItem  >
     <ListItemText
-         primary={<Typography variant="body2" style={{ color: 'red' }}>Test 99</Typography>}
+         primary={<Typography variant="body2" style={{ color: 'red' }}>Test {item.id}</Typography>}
           secondary={
             <React.Fragment>
               <Typography
@@ -55,12 +62,11 @@ export default function CalllogScreen() {
                 Phone Call Audio
               </Typography>
             </React.Fragment>
+            
           }
         />
             
-          {/* <IconButton edge="end" aria-label="delete"> */}
-            <span className='time'style={{color:'white'}}>5:55PM</span><DeleteIcon className='deleteicon' style={{color:'red'}} onClick={handledelete} />
-          {/* </IconButton> */}
+            <span className='time'style={{color:'white'}}>5:55PM</span><DeleteIcon className='deleteicon' style={{color:'red'}} onClick={()=>handledelete(item.id)} />
       
     </ListItem>
     <Divider sx={{
@@ -69,7 +75,7 @@ export default function CalllogScreen() {
     },
   }} />
   </React.Fragment>
-   ))):<div className='calllog' >No Call logs exist</div>}
+   )) ):<div className='calllog' >No Call logs exist</div>}
     </List>
     </div>
   )

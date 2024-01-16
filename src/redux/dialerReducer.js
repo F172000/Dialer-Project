@@ -1,32 +1,30 @@
 
-const initialState = {
-  dialedNumber: '',
-  count:0,
-};
+const initialState = [
+  {dialedNumber:'023459',id:0}
+];
 
 const dialerReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_DIALED_NUMBER':
-      return {
-        ...state,
-        dialedNumber: action.payload,
-        count:state.count+1,
-      };
+      return [...state, { id: Date.now(), dialedNumber: action.payload }];
     case 'Add_Number':
-      return {
+      return [
         ...state,
-        dialedNumber:action.payload,
-      }
+        { id: Date.now(), dialedNumber: action.payload },
+      ];
       case 'Remove_Number':
-        return {
-          ...state,
-          dialedNumber:action.payload,
+        const updatedState = [...state];
+        const lastEntryIndex = updatedState.length - 1;
+  
+        if (lastEntryIndex >= 0) {
+          const lastEntry = { ...updatedState[lastEntryIndex] };
+          lastEntry.dialedNumber = lastEntry.dialedNumber.slice(0, -1);
+          updatedState[lastEntryIndex] = lastEntry;
         }
+  
+        return updatedState;
       case 'delete':
-        return {
-          ...state,
-          count:action.payload,
-        }
+        return state.filter((log) => log.id !== action.payload);
     default:
       return state;
   }
